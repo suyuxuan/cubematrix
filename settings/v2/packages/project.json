@@ -12,6 +12,10 @@
     {
       "name": "background",
       "value": 1
+    },
+    {
+      "name": "2dLayer",
+      "value": 2
     }
   ]
 }
