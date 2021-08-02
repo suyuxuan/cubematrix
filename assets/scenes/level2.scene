@@ -2216,6 +2216,9 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "titleLabel": {
+      "__id__": 43
+    },
     "audio": {
       "__id__": 131
     },

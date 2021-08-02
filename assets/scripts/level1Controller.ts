@@ -3,7 +3,7 @@ import {
     Animation,
     _decorator,
     geometry,
-    systemEvent, SystemEventType, Component, Node, Camera, PhysicsSystem
+    systemEvent, SystemEventType, Component, Node, Camera, PhysicsSystem, Label, AudioSource
 } from 'cc';
 const { ccclass, property } = _decorator;
 
@@ -20,6 +20,12 @@ export class Level1Controller extends Component {
 
     target: number[] = [0, 0, 0];
 
+    @property(Label)
+    titleLabel: Label | null = null;
+
+    @property(AudioSource)
+    audio: AudioSource | null = null;
+    
     @property(Camera)
     camera: Camera | null = null;
 
@@ -48,31 +54,36 @@ export class Level1Controller extends Component {
             for (let i = 0; i < r.length; i++) {
                 const item = r[i];
                 if (item.collider.node.uuid == this.node0.uuid) {
-                    this.moveNode(0);
-                    this.moveNode(1);
-                    if(this.win()) {
-                        window.alert('win!');
-                    }
+                    this.batchMoveNode(0, 1);
 
                 } else if (item.collider.node.uuid == this.node1.uuid) {
-
-                    this.moveNode(1);
-                    this.moveNode(0);
-                    this.moveNode(2);
-                    if(this.win()) {
-                        window.alert('win!');
-                    }
+                    this.batchMoveNode(1, 0, 2);
 
                 } else if (item.collider.node.uuid == this.node2.uuid) {
-                    this.moveNode(2);
-                    this.moveNode(1);
-                    if(this.win()) {
-                        window.alert('win!');
-                    }
+                    this.batchMoveNode(2, 1);
                 }
             }
         }
 
+    }
+
+
+
+    private batchMoveNode(...indices: number[]) {
+        this.playRollAudio();
+        for (let index of indices) {
+            this.moveNode(index);
+        }
+
+        if (this.win() && !!this.titleLabel) {
+            this.titleLabel.string = " PASSED!";
+        }
+    }
+
+    private playRollAudio() {
+        if(this.audio == null || this.audio == undefined) return;
+        this.audio.currentTime = 1;
+        this.audio.play();
     }
 
     private win(): boolean {
@@ -101,9 +112,12 @@ export class Level1Controller extends Component {
 
     }
 
-    // update (deltaTime: number) {
-    //     // [4]
-    // }
+    update(deltaTime: number) {
+
+        if (this.audio && this.audio.currentTime > 2) {
+            this.audio.stop();
+        }
+    }
 }
 
 /**

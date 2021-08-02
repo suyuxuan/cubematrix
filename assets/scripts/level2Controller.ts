@@ -3,7 +3,7 @@ import {
     Animation,
     _decorator,
     geometry,
-    systemEvent, SystemEventType, Component, Node, Camera, PhysicsSystem, AudioSource
+    systemEvent, SystemEventType, Component, Node, Camera, PhysicsSystem, AudioSource, Label, Color
 } from 'cc';
 const { ccclass, property } = _decorator;
 
@@ -20,8 +20,11 @@ export class Level2Controller extends Component {
 
     target: number[] = [0, 0, 0, 0];
 
+    @property(Label)
+    titleLabel: Label | null = null;
+
     @property(AudioSource)
-    audio: AudioSource = null;
+    audio: AudioSource | null = null;
 
     @property(Camera)
     camera: Camera | null = null;
@@ -106,19 +109,20 @@ export class Level2Controller extends Component {
             this.moveNode(index);
         }
 
-        if (this.win()) {
-            window.alert('win!');
+        if (this.win() && !!this.titleLabel) {
+            this.titleLabel.string = " PASSED!";
         }
     }
 
     private playRollAudio() {
+        if(!!!this.audio) return;
         this.audio.currentTime = 1;
         this.audio?.play();
     }
 
     update(deltaTime: number) {
 
-        if (this.audio?.currentTime > 2) {
+        if (this.audio && this.audio?.currentTime > 2) {
             this.audio?.stop();
         }
     }
