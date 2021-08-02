@@ -2,12 +2,12 @@
   "ver": "1.0.11",
   "importer": "animation-clip",
   "imported": true,
-  "uuid": "a7d89f73-78a1-4be6-bdd2-39d2127d9eaf",
+  "uuid": "4d3c7b41-5c72-4526-97c0-4198b78c8990",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "name": "commoncube"
+    "name": "cubeAnim2"
   }
 }

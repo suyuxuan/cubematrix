@@ -30,14 +30,14 @@
   ],
   "_props": [
     {
-      "occlusion": 0.924,
-      "roughness": 0.747,
-      "metallic": 0.755,
+      "occlusion": 0.701,
+      "roughness": 0.332,
+      "metallic": 0.701,
       "emissive": {
         "__type__": "cc.Color",
-        "r": 119,
-        "g": 18,
-        "b": 5,
+        "r": 18,
+        "g": 26,
+        "b": 204,
         "a": 255
       }
     },

@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, SystemEvent, SystemEventType, EventHandler, Quat } from 'cc';
+import { Animation, _decorator, Component, Node, SystemEvent, SystemEventType, EventHandler, Quat } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('CommonCube')
@@ -11,22 +11,32 @@ export class CommonCube extends Component {
     // @property
     // serializableDummy = 0;
 
-    rotationDirection: 'horizontal'|'vertical' = 'horizontal';
+    rotationDirection: 'horizontal' | 'vertical' = 'horizontal';
 
-    start () {
- 
+    state: 0 | 1 | 2 | 3 | 4 = 0;
+
+    start() {
+
     }
 
+    moveNext() {
+        let anim = this.getComponent(Animation);
+        let animState: any = anim?.play('cubeAnim' + this.state);
+        this.state++;
+        if (this.state >= 4) this.state = 0;
+    }
 
-    onBtnClick(customData:any){
+    onBtnClick(event: any, customData: any) {
         console.log('button has been clicked ' + customData);
+        this.moveNext();
+
     }
 
     // update (deltaTime: number) {
     //     // [4]
     // }
 
-    
+
 }
 
 /**

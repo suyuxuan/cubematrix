@@ -1,22 +1,19 @@
 [
   {
     "__type__": "cc.AnimationClip",
-    "_name": "commoncube",
+    "_name": "cubeAnim0",
     "_objFlags": 0,
     "_native": "",
     "sample": 60,
     "speed": 1,
-    "wrapMode": 2,
+    "wrapMode": 1,
     "events": [],
     "enableTrsBlending": false,
-    "_duration": 4,
+    "_duration": 1,
     "_keys": [
       [
         0,
-        1,
-        2,
-        3,
-        4
+        1
       ]
     ],
     "_stepness": 0,
@@ -42,24 +39,6 @@
               "x": 0,
               "y": 90,
               "z": 0
-            },
-            {
-              "__type__": "cc.Vec3",
-              "x": 0,
-              "y": 180,
-              "z": 0
-            },
-            {
-              "__type__": "cc.Vec3",
-              "x": 0,
-              "y": 270,
-              "z": 0
-            },
-            {
-              "__type__": "cc.Vec3",
-              "x": 0,
-              "y": 90,
-              "z": 0
             }
           ],
           "easingMethods": {}
@@ -67,7 +46,7 @@
       }
     ],
     "_commonTargets": [],
-    "_hash": 3253918797
+    "_hash": 1472015818
   },
   {
     "__type__": "cc.animation.HierarchyPath",
