@@ -115,15 +115,15 @@ export class Level2Controller extends Component {
     }
 
     private playRollAudio() {
-        if(!!!this.audio) return;
+        if(this.audio == null || this.audio == undefined) return;
         this.audio.currentTime = 1;
-        this.audio?.play();
+        this.audio.play();
     }
 
     update(deltaTime: number) {
 
-        if (this.audio && this.audio?.currentTime > 2) {
-            this.audio?.stop();
+        if (this.audio && this.audio.currentTime > 2) {
+            this.audio.stop();
         }
     }
 }

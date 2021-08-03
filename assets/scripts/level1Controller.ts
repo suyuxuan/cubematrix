@@ -114,7 +114,7 @@ export class Level1Controller extends Component {
 
     update(deltaTime: number) {
 
-        if (this.audio && this.audio.currentTime > 2) {
+        if (this.audio && this.audio.currentTime >= 2) {
             this.audio.stop();
         }
     }
