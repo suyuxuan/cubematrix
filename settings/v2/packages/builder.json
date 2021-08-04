@@ -1,3 +1,14 @@
 {
-  "__version__": "1.2.8"
+  "__version__": "1.2.8",
+  "splash-setting": {
+    "clearColor": {
+      "x": 0.12156862745098039,
+      "y": 0.11764705882352941,
+      "z": 0.11764705882352941,
+      "w": 1
+    },
+    "displayWatermark": false,
+    "url": "C:\\Users\\Yuxuan\\Desktop\\logo.png",
+    "displayRatio": 0.3
+  }
 }

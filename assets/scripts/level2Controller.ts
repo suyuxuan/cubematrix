@@ -3,7 +3,8 @@ import {
     Animation,
     _decorator,
     geometry,
-    systemEvent, SystemEventType, Component, Node, Camera, PhysicsSystem, AudioSource, Label, Color
+    systemEvent, SystemEventType, Component, Node, Camera, PhysicsSystem, AudioSource, Label, Color,
+    AudioClip,
 } from 'cc';
 const { ccclass, property } = _decorator;
 
@@ -26,6 +27,9 @@ export class Level2Controller extends Component {
     @property(AudioSource)
     audio: AudioSource | null = null;
 
+    @property(AudioSource)
+    passedAudio: AudioSource | null = null;
+
     @property(Camera)
     camera: Camera | null = null;
 
@@ -41,9 +45,12 @@ export class Level2Controller extends Component {
     @property(Node)
     node3: any = null;
 
+    startTime = new Date().getTime();
+
     start() {
         // [3]
         systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        this.startTime = new Date().getTime();
     }
 
     onTouchStart(touch: any) {
@@ -76,7 +83,8 @@ export class Level2Controller extends Component {
     }
 
     private win(): boolean {
-        return this.states.every((value, index) => value == this.target[index]);
+        let win: boolean = this.states.every((value, index) => value == this.target[index]);
+        return win;
     }
 
 
@@ -104,27 +112,31 @@ export class Level2Controller extends Component {
     }
 
     private batchMoveNode(...indices: number[]) {
+        if(this.win()) return;
+
         this.playRollAudio();
         for (let index of indices) {
             this.moveNode(index);
         }
 
         if (this.win() && !!this.titleLabel) {
-            this.titleLabel.string = " PASSED!";
+            this.titleLabel.string += " PASSED!";
+            this.passedAudio?.play();
+
+            let timecost = new Date().getTime() - this.startTime;
+            console.log(`Pass time cost - ${timecost / 1000}s`);
+
+            let popupController = this.node.getChildByName("winPopup")?.getComponent('WinPopupController') as WinPopupController;
+            popupController.showWindow(timecost / 1000);
         }
     }
 
     private playRollAudio() {
-        if(this.audio == null || this.audio == undefined) return;
-        this.audio.currentTime = 1;
+        if (this.audio == null || this.audio == undefined) return;
         this.audio.play();
     }
 
     update(deltaTime: number) {
-
-        if (this.audio && this.audio.currentTime > 2) {
-            this.audio.stop();
-        }
     }
 }
 
