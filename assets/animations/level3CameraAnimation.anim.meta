@@ -1,0 +1,13 @@
+{
+  "ver": "1.0.11",
+  "importer": "animation-clip",
+  "imported": true,
+  "uuid": "62bc6b48-9c44-4e96-8dc8-5b1f3446bd3b",
+  "files": [
+    ".json"
+  ],
+  "subMetas": {},
+  "userData": {
+    "name": "level3CameraAnimation"
+  }
+}
