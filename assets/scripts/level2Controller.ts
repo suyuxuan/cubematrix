@@ -17,7 +17,7 @@ export class Level2Controller extends Component {
     // @property
     // serializableDummy = 0;
 
-    states: number[] = [3, 3, 3, 3];
+    states: number[] = [0, 3, 2, 1];
 
     target: number[] = [0, 0, 0, 0];
 
@@ -65,7 +65,7 @@ export class Level2Controller extends Component {
                 const item = r[i];
                 if (item.collider.node.uuid == this.node0.uuid) {
 
-                    this.batchMoveNode(0, 1, 3);
+                    this.batchMoveNode(0, 1);
 
 
                 } else if (item.collider.node.uuid == this.node1.uuid) {
@@ -75,7 +75,7 @@ export class Level2Controller extends Component {
                     this.batchMoveNode(2, 1, 3);
                 }
                 else if (item.collider.node.uuid == this.node3.uuid) {
-                    this.batchMoveNode(3, 2, 0);
+                    this.batchMoveNode(3, 2);
                 }
             }
         }

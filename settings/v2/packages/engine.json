@@ -92,12 +92,12 @@
     "includeModules": [
       "base",
       "gfx-webgl",
-      "audio",
       "3d",
+      "2d",
+      "ui",
       "physics-ammo",
       "primitive",
-      "2d",
-      "ui"
+      "audio"
     ],
     "noDeprecatedFeatures": {
       "value": false,
